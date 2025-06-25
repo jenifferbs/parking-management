@@ -5,7 +5,7 @@ Sistema desenvolvido para gerenciar estacionamentos com controle de vagas, entra
 ## Tecnologias Utilizadas
 
 - **Java** - Linguagem principal
-- **Spring Boot 3.2** - Framework web
+- **Spring Boot 3.5** - Framework web
 - **Spring Data JPA** - Persistência de dados
 - **PostgreSQL** - Banco de dados
 - **Flyway** - Migração de banco de dados
@@ -35,7 +35,7 @@ Sistema desenvolvido para gerenciar estacionamentos com controle de vagas, entra
 - `GET /revenue` - Faturamento por data e setor
 
 ### Swagger UI
-- Acesse a documentação da API em `http://localhost:3003/swagger-ui.html`
+- Acesse a documentação da API em [http://localhost:3003/swagger-ui.html](http://localhost:3003/swagger-ui.html)
 
 ## Como Executar
 
@@ -49,7 +49,7 @@ Execute o ambiente completo:
 ```bash
 docker compose up -d
 ```
-### Execução Local para Desenvolvimento
+### Execução Local
 
 1. Inicie o Postgres:
 ```bash
@@ -65,7 +65,7 @@ docker compose up garage-simulator -d
 ```bash
 mvn spring-boot:run
 ```
-ou executando a classe principal `ParkingManagementApplication.java` no seu IDE.
+ou execute a classe `ParkingManagementApplication.java` na sua IDE.
 
 ## Estrutura do Projeto
 
