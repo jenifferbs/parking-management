@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  garage-simulator:
+    image: cfontes0estapar/garage-sim:1.0.0
+    container_name: garage-simulator
+    ports:
+      - "3000:3000"
+    networks:
+      - parking-network
+
+  postgres:
+    image: postgres:15
+    container_name: parking-postgres
+    environment:
+      POSTGRES_DB: parking_db
+      POSTGRES_USER: parking_user
+      POSTGRES_PASSWORD: parking_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - parking-network
+
+  app:
+    build: .
+    container_name: parking-app
+    ports:
+      - "3003:3003"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/parking_db
+      SPRING_DATASOURCE_USERNAME: parking_user
+      SPRING_DATASOURCE_PASSWORD: parking_pass
+    depends_on:
+      - postgres
+      - garage-simulator
+    networks:
+      - parking-network
+
+volumes:
+  postgres_data:
+
+networks:
+  parking-network:
+    driver: bridge
