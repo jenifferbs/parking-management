@@ -33,7 +33,7 @@ public class RevenueControllerTest {
                 .timestamp(LocalDateTime.of(2025, 6, 24, 10, 0, 0))
                 .build();
 
-        when(revenueService.calculateRevenue(LocalDate.now(), "A")).thenReturn(response);
+        when(revenueService.calculateRevenue(LocalDate.of(2025, 6, 24), "A")).thenReturn(response);
 
         mvc.perform(get("/revenue")
                         .contentType("application/json")
